@@ -1,15 +1,23 @@
 {
   "name": "iwc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Incremental word count.",
   "homepage": "https://github.com/chbrown/iwc",
-  "keywords": ["incremental", "word", "count", "wc", "nodeps"],
+  "keywords": [
+    "incremental",
+    "word",
+    "count",
+    "wc",
+    "nodeps"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/chbrown/iwc.git"
   },
   "author": "Christopher Brown <io@henrian.com>",
   "license": "MIT",
-  "bin": {"iwc": "index.js"},
+  "bin": {
+    "iwc": "index.js"
+  },
   "main": "index.js"
 }
