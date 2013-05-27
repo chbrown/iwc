@@ -9,6 +9,7 @@
     "url": "git://github.com/chbrown/iwc.git"
   },
   "author": "Christopher Brown <io@henrian.com>",
+  "license": "MIT",
   "bin": {"iwc": "index.js"},
   "main": "index.js"
 }

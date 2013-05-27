@@ -23,6 +23,6 @@ It defaults to counting all three.
 * `iwc -l` can be between 2-3x slower than `wc -l`.
 * `iwc` and `iwc -w` are even slower, since they tokenize and count words.
 
-## LICENSE
+## License
 
-Copyright 2013, Christopher Brown. MIT Licensed.
+Copyright © 2013 Christopher Brown. [MIT Licensed](LICENSE).
