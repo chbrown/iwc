@@ -8,6 +8,11 @@ You can limit the counting to lines, words, or characters, like `wc`:
 
 It defaults to counting all three.
 
+## E.g.:
+
+    $ cat /usr/share/dict/words | iwc
+    235886  235916  2493109
+
 ## Limitations:
 
 * Only allows `STDIN` input (standard `wc` allows `STDIN` as well as filenames).
