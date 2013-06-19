@@ -2,6 +2,8 @@
 'use strict'; /*jslint node: true, es5: true, indent: 2 */
 var fs = require('fs');
 
+var started = Date.now();
+
 var args = (function(argv) {
   var args = {}, f = 0;
   for (var arg, i = 0; (arg = argv[i]); i++) {
@@ -27,15 +29,18 @@ var args = (function(argv) {
   return args;
 })(process.argv.slice(2)); // slice off the first two arguments, [node, iwc, ...]
 
-var show_l = args.l;
-var show_w = args.w;
-var show_c = args.c;
+var show_l = args.l; // lines
+var show_w = args.w; // words
+var show_c = args.c; // characters
 if (!show_l && !show_w && !show_c) {
   show_l = show_w = show_c = true;
 }
 
-var count_c = 0, count_w = 0, count_l = 0;
-var printLine = function() {
+var count_l = 0;
+var count_w = 0;
+var count_c = 0;
+
+function printCounts() {
   var counts = [];
   if (show_l)
     counts.push(count_l);
@@ -43,8 +48,24 @@ var printLine = function() {
     counts.push(count_w);
   if (show_c)
     counts.push(count_c);
-  process.stdout.write('\r' + counts.join('\t'), 'utf8');
-};
+  process.stdout.write('\r' + counts.join('\t') + ' ', 'utf8');
+}
+
+var precision = 4;
+
+function printRates() {
+  var elapsed_seconds = (Date.now() - started) / 1000;
+  var rates = [];
+  if (show_l)
+    rates.push((count_l / elapsed_seconds).toFixed(precision));
+  if (show_w)
+    rates.push((count_w / elapsed_seconds).toFixed(precision));
+  if (show_c)
+    rates.push((count_c / elapsed_seconds).toFixed(precision));
+  process.stdout.write('\r' + rates.join('\t') + ' ', 'utf8');
+}
+
+var printLine = args.r ? printRates : printCounts; // rate
 
 process.stdin.on('data', function(chunk) {
   if (show_l) {
@@ -66,8 +87,14 @@ process.stdin.on('data', function(chunk) {
 process.stdin.on('end', function() {
   printLine();
   process.stdout.write('\n', 'utf8');
-  process.exit('end');
+  process.exit(0);
 });
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
+
+process.on('SIGINT', function() {
+  process.stdin.pause();
+  process.stdout.write('\n', 'utf8');
+  process.exit(1);
+});
