@@ -6,12 +6,17 @@ You can limit the counting to lines, words, or characters, like `wc`:
 
     iwc [-l] [-w] [-c]
 
-It defaults to counting all three.
+If you don't specify any, it defaults to all three.
 
 ## E.g.:
 
-    $ cat /usr/share/dict/words | iwc
+    $ iwc < /usr/share/dict/words
     235886  235916  2493109
+
+or after a quick `npm install -g twilight json`
+
+    $ twitter-curl | json -C text | iwc -w
+    14477
 
 ## Limitations:
 
@@ -20,7 +25,7 @@ It defaults to counting all three.
 
     process.stdin.on('data', function(chunk) { ... })
 
-* `iwc -l` can be between 2-3x slower than `wc -l`.
+* `iwc -l` can be 2-3x slower than `wc -l`.
 * `iwc` and `iwc -w` are even slower, since they tokenize and count words.
 
 ## License
