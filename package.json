@@ -7,17 +7,12 @@
     "incremental",
     "word",
     "count",
-    "wc",
-    "nodeps"
+    "wc"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/chbrown/iwc.git"
-  },
+  "repository": "git://github.com/chbrown/iwc.git",
   "author": "Christopher Brown <io@henrian.com>",
   "license": "MIT",
   "bin": {
     "iwc": "index.js"
-  },
-  "main": "index.js"
+  }
 }
