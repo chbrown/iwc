@@ -1,5 +1,7 @@
 # Incremental word count
 
+[![latest version published to npm](https://badge.fury.io/js/iwc.svg)](https://www.npmjs.com/package/iwc)
+
 Display line, word, and chracter counts, just like `wc`, but updated with every chunk of data fed to stdin.
 
 You can limit the counting to lines, words, or characters, like `wc`:
@@ -7,6 +9,7 @@ You can limit the counting to lines, words, or characters, like `wc`:
     iwc [-l] [-w] [-c]
 
 If you don't specify any, it defaults to all three.
+
 
 ## E.g.:
 
@@ -18,6 +21,7 @@ or after a quick `npm install -g twilight json`
     $ twitter-curl | json -C text | iwc -w
     14477
 
+
 ## Limitations:
 
 * Only allows `STDIN` input (standard `wc` allows `STDIN` as well as filenames).
@@ -28,6 +32,8 @@ or after a quick `npm install -g twilight json`
 * `iwc -l` can be 2-3x slower than `wc -l`.
 * `iwc` and `iwc -w` are even slower, since they tokenize and count words.
 
+
 ## License
 
-Copyright © 2013 Christopher Brown. [MIT Licensed](LICENSE).
+Copyright © 2013 Christopher Brown.
+[MIT Licensed](https://chbrown.github.io/licenses/MIT/#2013).
